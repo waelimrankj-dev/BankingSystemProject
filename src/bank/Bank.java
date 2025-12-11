@@ -49,6 +49,30 @@ public void deposit(String accountNumber, double amount) {
 
         transactions.add(new Transaction("DEPOSIT", amount, accountNumber));
     }
+public void withdraw(String accountNumber, double amount) {
+
+    if (amount <= 0) {
+        throw new IllegalArgumentException("Amount must be positive");
+    }
+
+    Account target = null;
+
+    for (Account acc : accounts) {
+        if (acc.getAccountNumber().equals(accountNumber)) {
+            target = acc;
+            break;
+        }
+    }
+
+    if (target == null) {
+        throw new IllegalArgumentException("Hesap bulunamadı");
+    }
+
+    
+    target.withdraw(amount);
+
+    transactions.add(new Transaction("WITHDRAW", amount, accountNumber));
+}
 
 }
 
