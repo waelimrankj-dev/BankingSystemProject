@@ -73,6 +73,40 @@ public void withdraw(String accountNumber, double amount) {
 
     transactions.add(new Transaction("WITHDRAW", amount, accountNumber));
 }
+public void transfer(String fromAccount, String toAccount, double amount) {
 
+    if (amount <= 0) {
+        throw new IllegalArgumentException("Amount must be positive");
+    }
+
+    Account sender = null;
+    Account receiver = null;
+
+    for (Account acc : accounts) {
+        if (acc.getAccountNumber().equals(fromAccount)) {
+            sender = acc;
+        }
+        if (acc.getAccountNumber().equals(toAccount)) {
+            receiver = acc;
+        }
+    }
+
+    if (sender == null || receiver == null) {
+        throw new IllegalArgumentException("Hesap bulunamadı");
+    }
+
+    if (sender == receiver) {
+        throw new IllegalArgumentException("Aynı hesaba transfer yapılamaz");
+    }
+
+    
+    sender.withdraw(amount);
+
+   
+    receiver.deposit(amount);
+
+
+    transactions.add(new Transaction("TRANSFER", amount, fromAccount + " -> " + toAccount));
+}
 }
 
