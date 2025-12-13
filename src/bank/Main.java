@@ -19,5 +19,7 @@ public class Main {
         System.out.println("Hesap 2 Bakiye: " + acc2.getBalance());
 
         System.out.println("Sistem test edildi, hata yok.");
+        
     }
 }
+

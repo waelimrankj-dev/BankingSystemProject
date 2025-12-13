@@ -108,5 +108,17 @@ public void transfer(String fromAccount, String toAccount, double amount) {
 
     transactions.add(new Transaction("TRANSFER", amount, fromAccount + " -> " + toAccount));
 }
+public List<Transaction> getTransactionHistory(String accountNumber) {
+
+    List<Transaction> history = new ArrayList<>();
+
+    for (Transaction t : transactions) {
+        if (t.getAccountNumber().contains(accountNumber)) {
+            history.add(t);
+        }
+    }
+
+    return history;
+}
 }
 
