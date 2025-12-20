@@ -25,7 +25,7 @@ public class Bank {
         return transactions;
     }
     
-    
+
 public void deposit(String accountNumber, double amount) {
 
         if (amount <= 0) {
@@ -49,7 +49,7 @@ public void deposit(String accountNumber, double amount) {
 
         transactions.add(new Transaction("DEPOSIT", amount, accountNumber));
     }
-public void withdraw(String accountNumber, double amount) {
+ void withdraw(String accountNumber, double amount) {
 
     if (amount <= 0) {
         throw new IllegalArgumentException("Amount must be positive");
@@ -73,6 +73,7 @@ public void withdraw(String accountNumber, double amount) {
 
     transactions.add(new Transaction("WITHDRAW", amount, accountNumber));
 }
+
 public void transfer(String fromAccount, String toAccount, double amount) {
 
     if (amount <= 0) {
@@ -108,6 +109,7 @@ public void transfer(String fromAccount, String toAccount, double amount) {
 
     transactions.add(new Transaction("TRANSFER", amount, fromAccount + " -> " + toAccount));
 }
+
 public List<Transaction> getTransactionHistory(String accountNumber) {
 
     List<Transaction> history = new ArrayList<>();
